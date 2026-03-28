@@ -1,0 +1,96 @@
+body{
+  margin:0;
+  font-family:Arial;
+  background:#0b1220;
+  color:white;
+  scroll-behavior:smooth;
+}
+
+/* NAV */
+nav{
+  display:flex;
+  justify-content:space-between;
+  padding:15px;
+  background:rgba(0,0,0,0.7);
+  position:sticky;
+  top:0;
+  backdrop-filter:blur(10px);
+}
+
+nav a{
+  color:white;
+  margin:0 10px;
+  text-decoration:none;
+}
+
+/* HERO */
+.hero{
+  text-align:center;
+  padding:120px 20px;
+  background:linear-gradient(135deg,#4f46e5,#06b6d4);
+}
+
+/* BUTTON */
+button{
+  padding:12px 20px;
+  border:none;
+  border-radius:8px;
+  cursor:pointer;
+}
+
+/* SECTIONS */
+.section{
+  padding:80px 20px;
+  text-align:center;
+}
+
+.dark{
+  background:#111827;
+}
+
+/* GRID */
+.grid{
+  display:flex;
+  gap:20px;
+  justify-content:center;
+  flex-wrap:wrap;
+}
+
+.card{
+  background:rgba(255,255,255,0.08);
+  padding:20px;
+  border-radius:12px;
+  width:180px;
+  transition:0.3s;
+}
+
+.card:hover{
+  transform:translateY(-10px);
+  background:rgba(255,255,255,0.2);
+}
+
+/* FORM */
+input{
+  display:block;
+  margin:10px auto;
+  padding:10px;
+  width:250px;
+}
+
+footer{
+  text-align:center;
+  padding:20px;
+  background:black;
+}
+
+/* ANIMATION */
+.reveal{
+  opacity:0;
+  transform:translateY(40px);
+  transition:1s;
+}
+
+.reveal.active{
+  opacity:1;
+  transform:translateY(0);
+}

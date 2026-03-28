@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>FreelancerX</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div id="navbar"></div>
+
+<section class="hero">
+  <h1 class="reveal">Hi, I'm a Web Developer</h1>
+  <p class="reveal">I build modern & premium websites</p>
+  <button onclick="cta()">Hire Me</button>
+</section>
+
+<section class="section reveal">
+  <h2>About Me</h2>
+  <p>I design and develop high quality websites for clients.</p>
+</section>
+
+<section class="section dark reveal">
+  <h2>Services</h2>
+  <div class="grid">
+    <div class="card">Web Development</div>
+    <div class="card">UI/UX Design</div>
+    <div class="card">Landing Pages</div>
+  </div>
+</section>
+
+<section class="section reveal">
+  <h2>Projects</h2>
+  <div id="projects" class="grid"></div>
+</section>
+
+<section class="section dark reveal">
+  <h2>Contact Me</h2>
+  <form onsubmit="return sendForm()">
+    <input id="name" placeholder="Your Name">
+    <input id="email" placeholder="Your Email">
+    <button type="submit">Send</button>
+  </form>
+</section>
+
+<div id="footer"></div>
+
+<script src="navbar.js"></script>
+<script src="footer.js"></script>
+<script src="projects.js"></script>
+<script src="animations.js"></script>
+<script src="form.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>
