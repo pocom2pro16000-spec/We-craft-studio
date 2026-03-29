@@ -1,57 +1,378 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>FreelancerX</title>
-<link rel="stylesheet" href="style.css">
-</head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Dev Portfolio | Premium Edition</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Sora:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* ==============================
+           THEME & RESET
+           ============================== */
+        :root {
+            --bg-dark: #09090c;
+            --bg-card: rgba(255, 255, 255, 0.05); /* Glass Effect */
+            --accent-primary: #3b82f6; /* Premium Blue */
+            --accent-glow: rgba(59, 130, 246, 0.4);
+            --text-main: #f3f4f6;
+            --text-sub: #a1a1aa;
+            --font-headings: 'Sora', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            --section-padding: 100px 20px;
+        }
 
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth; /* Smooth Scroll effect */
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            font-family: var(--font-body);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Container for content */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        h2.section-title {
+            font-family: var(--font-headings);
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-sub);
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto 80px auto;
+        }
+
+        /* ==============================
+           1. HERO SECTION (GLASSMORPHISM)
+           ============================== */
+        #hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            background: radial-gradient(circle at 50% 50%, rgba(59, 130, 246, 0.15), transparent 60%);
+        }
+
+        #hero::before {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: var(--accent-glow);
+            filter: blur(120px);
+            top: 20%;
+            left: 10%;
+            border-radius: 50%;
+            z-index: -1;
+        }
+
+        .hero-content {
+            z-index: 10;
+        }
+
+        .hero-title {
+            font-family: var(--font-headings);
+            font-size: 4rem;
+            font-weight: 800;
+            letter-spacing: -2px;
+            margin-bottom: 15px;
+            background: linear-gradient(to bottom right, #fff, #a1a1aa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-title span {
+            color: var(--accent-primary);
+            -webkit-text-fill-color: var(--accent-primary);
+        }
+
+        .hero-sub {
+            font-size: 1.25rem;
+            color: var(--text-sub);
+            margin-bottom: 40px;
+            font-weight: 300;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            padding: 16px 36px;
+            background-color: var(--accent-primary);
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 50px;
+            font-family: var(--font-headings);
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 20px rgba(59, 130, 246, 0.2);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(59, 130, 246, 0.4);
+        }
+
+        /* ==============================
+           2. ABOUT ME SECTION
+           ============================== */
+        #about {
+            padding: var(--section-padding);
+        }
+
+        /* ==============================
+           3. SERVICES & PROJECTS (MODERN CARDS)
+           ============================== */
+        #services, #projects {
+            padding: var(--section-padding);
+            background-color: #0b0b0e;
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .premium-card {
+            background: var(--bg-card);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            border-radius: 20px;
+            padding: 40px;
+            transition: all 0.4s ease;
+            cursor: pointer;
+            backdrop-filter: blur(10px); /* Glassmorphism key */
+        }
+
+        .premium-card:hover {
+            border-color: rgba(59, 130, 246, 0.5);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        .card-icon {
+            font-size: 2rem;
+            margin-bottom: 25px;
+            color: var(--accent-primary);
+        }
+
+        .card-title {
+            font-family: var(--font-headings);
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            letter-spacing: -0.5px;
+        }
+
+        .card-text {
+            color: var(--text-sub);
+            font-size: 1rem;
+        }
+
+        /* ==============================
+           4. CONTACT ME SECTION
+           ============================== */
+        #contact {
+            padding: var(--section-padding);
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: var(--bg-card);
+            padding: 50px;
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.03);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 18px 25px;
+            background-color: rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            color: #fff;
+            font-family: var(--font-body);
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--accent-primary);
+        }
+
+        textarea.form-input {
+            resize: vertical;
+            height: 150px;
+        }
+
+        .btn-submit {
+            width: 100%;
+            border: none;
+            cursor: pointer;
+        }
+
+        /* ==============================
+           5. FOOTER
+           ============================== */
+        footer {
+            padding: 40px 20px;
+            text-align: center;
+            background-color: #040405;
+            border-top: 1px solid rgba(255, 255, 255, 0.03);
+        }
+
+        .footer-text {
+            font-size: 0.9rem;
+            color: var(--text-sub);
+            font-weight: 300;
+        }
+
+        /* ==============================
+           MOBILE RESPONSIVENESS (SUPER IMPORTANT)
+           ============================== */
+        @media (max-width: 768px) {
+            :root {
+                --section-padding: 70px 15px;
+            }
+
+            .hero-title {
+                font-size: 2.8rem;
+                letter-spacing: -1px;
+            }
+
+            .hero-sub {
+                font-size: 1rem;
+            }
+
+            h2.section-title {
+                font-size: 2rem;
+            }
+
+            .premium-card {
+                padding: 30px;
+            }
+
+            .contact-form {
+                padding: 30px;
+            }
+        }
+    </style>
+</head>
 <body>
 
-<div id="navbar"></div>
+    <section id="hero">
+        <div class="container hero-content">
+            <h1 class="hero-title">Hi, I'm a <span>Web Developer</span></h1>
+            <p class="hero-sub">I build modern, scalable, and premium digital experiences.</p>
+            <a href="#contact" class="btn-primary">Hire Me</a>
+        </div>
+    </section>
 
-<section class="hero">
-  <h1 class="reveal">Hi, I'm a Web Developer</h1>
-  <p class="reveal">I build modern & premium websites</p>
-  <button onclick="cta()">Hire Me</button>
-</section>
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <p class="section-subtitle">
+                I'm a passionate developer focusing on crafting high-quality, pixel-perfect websites for clients worldwide. Detail and performance are my priorities.
+            </p>
+        </div>
+    </section>
 
-<section class="section reveal">
-  <h2>About Me</h2>
-  <p>I design and develop high quality websites for clients.</p>
-</section>
+    <section id="services">
+        <div class="container">
+            <h2 class="section-title">Services</h2>
+            <p class="section-subtitle">Premium solutions tailored to your digital needs.</p>
+            
+            <div class="card-grid">
+                <div class="premium-card">
+                    <div class="card-icon">&#128187;</div> <h3 class="card-title">Web Development</h3>
+                    <p class="card-text">Building robust, scalable backends and dynamic frontends using modern tech.</p>
+                </div>
 
-<section class="section dark reveal">
-  <h2>Services</h2>
-  <div class="grid">
-    <div class="card">Web Development</div>
-    <div class="card">UI/UX Design</div>
-    <div class="card">Landing Pages</div>
-  </div>
-</section>
+                <div class="premium-card">
+                    <div class="card-icon">&#127912;</div> <h3 class="card-title">UI/UX Design</h3>
+                    <p class="card-text">Creating intuitive interfaces and seamless user experiences that delight.</p>
+                </div>
 
-<section class="section reveal">
-  <h2>Projects</h2>
-  <div id="projects" class="grid"></div>
-</section>
+                <div class="premium-card">
+                    <div class="card-icon">&#128205;</div> <h3 class="card-title">Landing Pages</h3>
+                    <p class="card-text">High-converting landing pages designed to turn visitors into customers.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<section class="section dark reveal">
-  <h2>Contact Me</h2>
-  <form onsubmit="return sendForm()">
-    <input id="name" placeholder="Your Name">
-    <input id="email" placeholder="Your Email">
-    <button type="submit">Send</button>
-  </form>
-</section>
+    <section id="projects">
+        <div class="container">
+            <h2 class="section-title">Projects</h2>
+            <p class="section-subtitle">A showcase of my recent premium work.</p>
 
-<div id="footer"></div>
+            <div class="card-grid">
+                <div class="premium-card">
+                    <div class="card-icon">&#128181;</div> <h3 class="card-title">E-commerce UI</h3>
+                    <p class="card-text">Modern shopping interface built with React.</p>
+                </div>
 
-<script src="navbar.js"></script>
-<script src="footer.js"></script>
-<script src="projects.js"></script>
-<script src="animations.js"></script>
-<script src="form.js"></script>
-<script src="script.js"></script>
+                <div class="premium-card">
+                    <div class="card-icon">&#128241;</div> <h3 class="card-title">Portfolio Website</h3>
+                    <p class="card-text">Sleek portfolio design for a creative agency.</p>
+                </div>
+
+                <div class="premium-card">
+                    <div class="card-icon">&#128200;</div> <h3 class="card-title">SaaS Dashboard</h3>
+                    <p class="card-text">Interactive data analytics dashboard UI.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title">Let's Connect</h2>
+            <p class="section-subtitle">Ready to start your next premium project?</p>
+            
+            <form class="contact-form">
+                <div class="form-group">
+                    <input type="text" class="form-input" placeholder="Your Name" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" class="form-input" placeholder="Your Email" required>
+                </div>
+                <div class="form-group">
+                    <textarea class="form-input" placeholder="Your Message" required></textarea>
+                </div>
+                <button type="submit" class="btn-primary btn-submit">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <p class="footer-text">&copy; 2026 PremiumX Agency | Crafted with passion.</p>
+    </footer>
 
 </body>
 </html>
