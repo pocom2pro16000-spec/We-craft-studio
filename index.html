@@ -3,375 +3,180 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Web Dev Portfolio | Premium Edition</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Sora:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <title>We-Craft Studio | Premium Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
-        /* ==============================
-           THEME & RESET
-           ============================== */
         :root {
-            --bg-dark: #09090c;
-            --bg-card: rgba(255, 255, 255, 0.05); /* Glass Effect */
-            --accent-primary: #3b82f6; /* Premium Blue */
-            --accent-glow: rgba(59, 130, 246, 0.4);
-            --text-main: #f3f4f6;
-            --text-sub: #a1a1aa;
-            --font-headings: 'Sora', sans-serif;
-            --font-body: 'Inter', sans-serif;
-            --section-padding: 100px 20px;
+            --bg: #0a0a0b;
+            --accent: #3b82f6;
+            --text: #ffffff;
+            --text-dim: #94a3b8;
+            --glass: rgba(255, 255, 255, 0.03);
+            --border: rgba(255, 255, 255, 0.08);
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            scroll-behavior: smooth; /* Smooth Scroll effect */
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        html { scroll-behavior: smooth; }
+        body { background: var(--bg); color: var(--text); line-height: 1.6; }
 
-        body {
-            background-color: var(--bg-dark);
-            color: var(--text-main);
-            font-family: var(--font-body);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 25px; }
 
-        /* Container for content */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        h2.section-title {
-            font-family: var(--font-headings);
-            font-size: 2.5rem;
-            text-align: center;
-            margin-bottom: 20px;
-            letter-spacing: -1px;
-        }
-
-        .section-subtitle {
-            font-size: 1.1rem;
-            color: var(--text-sub);
-            text-align: center;
-            max-width: 600px;
-            margin: 0 auto 80px auto;
-        }
-
-        /* ==============================
-           1. HERO SECTION (GLASSMORPHISM)
-           ============================== */
-        #hero {
+        /* Hero */
+        .hero {
             height: 100vh;
             display: flex;
-            align-items: center;
+            flex-direction: column;
             justify-content: center;
+            align-items: center;
             text-align: center;
-            position: relative;
-            background: radial-gradient(circle at 50% 50%, rgba(59, 130, 246, 0.15), transparent 60%);
+            background: radial-gradient(circle at top right, rgba(59, 130, 246, 0.12), transparent 40%);
         }
 
-        #hero::before {
-            content: '';
-            position: absolute;
-            width: 300px;
-            height: 300px;
-            background: var(--accent-glow);
-            filter: blur(120px);
-            top: 20%;
-            left: 10%;
-            border-radius: 50%;
-            z-index: -1;
-        }
-
-        .hero-content {
-            z-index: 10;
-        }
-
-        .hero-title {
-            font-family: var(--font-headings);
-            font-size: 4rem;
+        .hero h1 {
+            font-size: clamp(2.5rem, 10vw, 5rem);
             font-weight: 800;
-            letter-spacing: -2px;
-            margin-bottom: 15px;
-            background: linear-gradient(to bottom right, #fff, #a1a1aa);
+            letter-spacing: -3px;
+            background: linear-gradient(to bottom, #fff 40%, #52525b);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
         }
 
-        .hero-title span {
-            color: var(--accent-primary);
-            -webkit-text-fill-color: var(--accent-primary);
-        }
+        .hero p { color: var(--text-dim); font-size: 1.1rem; max-width: 550px; margin-bottom: 40px; }
 
-        .hero-sub {
-            font-size: 1.25rem;
-            color: var(--text-sub);
-            margin-bottom: 40px;
-            font-weight: 300;
-        }
-
-        .btn-primary {
-            display: inline-block;
-            padding: 16px 36px;
-            background-color: var(--accent-primary);
-            color: #fff;
+        .cta-btn {
+            padding: 16px 32px;
+            background: var(--accent);
+            color: white;
             text-decoration: none;
+            border-radius: 100px;
             font-weight: 600;
-            border-radius: 50px;
-            font-family: var(--font-headings);
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 20px rgba(59, 130, 246, 0.2);
+            transition: 0.4s;
+            box-shadow: 0 10px 30px -10px rgba(59, 130, 246, 0.5);
         }
 
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 30px rgba(59, 130, 246, 0.4);
-        }
+        /* Sections */
+        .section { padding: 100px 0; }
+        .section-title { font-size: 2.2rem; font-weight: 700; margin-bottom: 50px; text-align: center; letter-spacing: -1px; }
 
-        /* ==============================
-           2. ABOUT ME SECTION
-           ============================== */
-        #about {
-            padding: var(--section-padding);
-        }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
 
-        /* ==============================
-           3. SERVICES & PROJECTS (MODERN CARDS)
-           ============================== */
-        #services, #projects {
-            padding: var(--section-padding);
-            background-color: #0b0b0e;
-        }
-
-        .card-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-
-        .premium-card {
-            background: var(--bg-card);
-            border: 1px solid rgba(255, 255, 255, 0.03);
-            border-radius: 20px;
+        /* Premium Cards */
+        .card {
+            background: var(--glass);
+            border: 1px solid var(--border);
             padding: 40px;
-            transition: all 0.4s ease;
-            cursor: pointer;
-            backdrop-filter: blur(10px); /* Glassmorphism key */
+            border-radius: 24px;
+            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            backdrop-filter: blur(10px);
         }
 
-        .premium-card:hover {
-            border-color: rgba(59, 130, 246, 0.5);
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        .card:hover {
+            background: rgba(255, 255, 255, 0.06);
+            border-color: var(--accent);
+            transform: translateY(-10px);
         }
 
-        .card-icon {
-            font-size: 2rem;
-            margin-bottom: 25px;
-            color: var(--accent-primary);
-        }
+        .card h3 { margin-bottom: 15px; font-size: 1.4rem; }
+        .card p { color: var(--text-dim); font-size: 0.95rem; }
 
-        .card-title {
-            font-family: var(--font-headings);
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin-bottom: 15px;
-            letter-spacing: -0.5px;
-        }
-
-        .card-text {
-            color: var(--text-sub);
-            font-size: 1rem;
-        }
-
-        /* ==============================
-           4. CONTACT ME SECTION
-           ============================== */
-        #contact {
-            padding: var(--section-padding);
-        }
-
+        /* Contact Form */
         .contact-form {
             max-width: 600px;
             margin: 0 auto;
-            background: var(--bg-card);
-            padding: 50px;
+            background: var(--glass);
+            padding: 40px;
             border-radius: 24px;
-            border: 1px solid rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
         }
 
-        .form-group {
-            margin-bottom: 25px;
-        }
-
-        .form-input {
+        .input-group { margin-bottom: 20px; }
+        .input-group input, .input-group textarea {
             width: 100%;
-            padding: 18px 25px;
-            background-color: rgba(0, 0, 0, 0.2);
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 15px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--border);
             border-radius: 12px;
-            color: #fff;
-            font-family: var(--font-body);
-            font-size: 1rem;
-            transition: border-color 0.3s ease;
-        }
-
-        .form-input:focus {
+            color: white;
             outline: none;
-            border-color: var(--accent-primary);
         }
 
-        textarea.form-input {
-            resize: vertical;
-            height: 150px;
-        }
+        .input-group input:focus { border-color: var(--accent); }
 
-        .btn-submit {
-            width: 100%;
-            border: none;
-            cursor: pointer;
-        }
-
-        /* ==============================
-           5. FOOTER
-           ============================== */
+        /* Footer */
         footer {
-            padding: 40px 20px;
+            padding: 50px 0;
             text-align: center;
-            background-color: #040405;
-            border-top: 1px solid rgba(255, 255, 255, 0.03);
-        }
-
-        .footer-text {
+            border-top: 1px solid var(--border);
+            color: var(--text-dim);
             font-size: 0.9rem;
-            color: var(--text-sub);
-            font-weight: 300;
-        }
-
-        /* ==============================
-           MOBILE RESPONSIVENESS (SUPER IMPORTANT)
-           ============================== */
-        @media (max-width: 768px) {
-            :root {
-                --section-padding: 70px 15px;
-            }
-
-            .hero-title {
-                font-size: 2.8rem;
-                letter-spacing: -1px;
-            }
-
-            .hero-sub {
-                font-size: 1rem;
-            }
-
-            h2.section-title {
-                font-size: 2rem;
-            }
-
-            .premium-card {
-                padding: 30px;
-            }
-
-            .contact-form {
-                padding: 30px;
-            }
         }
     </style>
 </head>
 <body>
 
-    <section id="hero">
-        <div class="container hero-content">
-            <h1 class="hero-title">Hi, I'm a <span>Web Developer</span></h1>
-            <p class="hero-sub">I build modern, scalable, and premium digital experiences.</p>
-            <a href="#contact" class="btn-primary">Hire Me</a>
-        </div>
+    <section class="hero">
+        <h1>We-Craft <br>Studio.</h1>
+        <p>Expertly crafting high-performance websites and digital experiences with a premium touch.</p>
+        <a href="#services" class="cta-btn">Explore Services</a>
     </section>
 
-    <section id="about">
+    <section id="services" class="section">
         <div class="container">
-            <h2 class="section-title">About Me</h2>
-            <p class="section-subtitle">
-                I'm a passionate developer focusing on crafting high-quality, pixel-perfect websites for clients worldwide. Detail and performance are my priorities.
-            </p>
-        </div>
-    </section>
-
-    <section id="services">
-        <div class="container">
-            <h2 class="section-title">Services</h2>
-            <p class="section-subtitle">Premium solutions tailored to your digital needs.</p>
-            
-            <div class="card-grid">
-                <div class="premium-card">
-                    <div class="card-icon">&#128187;</div> <h3 class="card-title">Web Development</h3>
-                    <p class="card-text">Building robust, scalable backends and dynamic frontends using modern tech.</p>
+            <h2 class="section-title">Premium Services</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Web Development</h3>
+                    <p>Building lightning-fast websites using modern frameworks like React and Next.js.</p>
                 </div>
-
-                <div class="premium-card">
-                    <div class="card-icon">&#127912;</div> <h3 class="card-title">UI/UX Design</h3>
-                    <p class="card-text">Creating intuitive interfaces and seamless user experiences that delight.</p>
+                <div class="card">
+                    <h3>UI/UX Design</h3>
+                    <p>Clean, minimal, and user-centric designs that make your brand stand out.</p>
                 </div>
-
-                <div class="premium-card">
-                    <div class="card-icon">&#128205;</div> <h3 class="card-title">Landing Pages</h3>
-                    <p class="card-text">High-converting landing pages designed to turn visitors into customers.</p>
+                <div class="card">
+                    <h3>Performance</h3>
+                    <p>Optimizing every pixel for speed, SEO, and the best user experience.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="projects">
+    <section id="projects" class="section" style="background: rgba(255,255,255,0.01);">
         <div class="container">
-            <h2 class="section-title">Projects</h2>
-            <p class="section-subtitle">A showcase of my recent premium work.</p>
-
-            <div class="card-grid">
-                <div class="premium-card">
-                    <div class="card-icon">&#128181;</div> <h3 class="card-title">E-commerce UI</h3>
-                    <p class="card-text">Modern shopping interface built with React.</p>
+            <h2 class="section-title">Featured Work</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>E-commerce Pro</h3>
+                    <p>A high-conversion shop for modern lifestyle brands.</p>
                 </div>
-
-                <div class="premium-card">
-                    <div class="card-icon">&#128241;</div> <h3 class="card-title">Portfolio Website</h3>
-                    <p class="card-text">Sleek portfolio design for a creative agency.</p>
+                <div class="card">
+                    <h3>SaaS Dashboard</h3>
+                    <p>Complex data simplified with elegant UI and smooth charts.</p>
                 </div>
-
-                <div class="premium-card">
-                    <div class="card-icon">&#128200;</div> <h3 class="card-title">SaaS Dashboard</h3>
-                    <p class="card-text">Interactive data analytics dashboard UI.</p>
+                <div class="card">
+                    <h3>AI Platform</h3>
+                    <p>Next-gen interface for artificial intelligence startups.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="contact">
+    <section id="contact" class="section">
         <div class="container">
             <h2 class="section-title">Let's Connect</h2>
-            <p class="section-subtitle">Ready to start your next premium project?</p>
-            
             <form class="contact-form">
-                <div class="form-group">
-                    <input type="text" class="form-input" placeholder="Your Name" required>
-                </div>
-                <div class="form-group">
-                    <input type="email" class="form-input" placeholder="Your Email" required>
-                </div>
-                <div class="form-group">
-                    <textarea class="form-input" placeholder="Your Message" required></textarea>
-                </div>
-                <button type="submit" class="btn-primary btn-submit">Send Message</button>
+                <div class="input-group"><input type="text" placeholder="Your Name"></div>
+                <div class="input-group"><input type="email" placeholder="Your Email"></div>
+                <div class="input-group"><textarea rows="5" placeholder="Your Message"></textarea></div>
+                <button type="button" class="cta-btn" style="width:100%; border:none; cursor:pointer;">Send Message</button>
             </form>
         </div>
     </section>
 
     <footer>
-        <p class="footer-text">&copy; 2026 PremiumX Agency | Crafted with passion.</p>
+        <div class="container">
+            <p>&copy; 2026 We-Craft Studio. All rights reserved.</p>
+        </div>
     </footer>
 
 </body>
